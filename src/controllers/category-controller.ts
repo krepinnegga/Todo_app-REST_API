@@ -39,10 +39,12 @@ export const createCategory = async (req: AuthRequest, res: Response ) => {
   export const deleteCategory = async (req: AuthRequest, res: Response) => {
     try {
       const { id } = req.params;
-  
-      await Category.deleteMany({
-        _id : id
-      });
+      await Task.deleteMany({
+        categoryId: id,
+      })
+      const category = await Category.deleteOne({
+        _id: id,
+      })
       res.send({ message: "Category deleted successfully" });
     } catch (error) {
       console.log(error)

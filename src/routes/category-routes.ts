@@ -12,7 +12,7 @@ categoryRoutes.route("/create").post(createCategory);
 
 categoryRoutes.route("/:id").delete(deleteCategory);
 
-categoryRoutes.route("/update").patch(updateCategory)
+categoryRoutes.route("/update").patch(updateCategory);
 
 export default categoryRoutes
 

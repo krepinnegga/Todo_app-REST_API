@@ -2,6 +2,7 @@ import express, { Request, Response } from "express";
 import connectToDatabase from "./db";
 import userRoutes from './routes/user-routes';
 import categoryRoutes from "./routes/category-routes";
+import taskRoutes from "./routes/task-routes";
 
 const app = express();
 
@@ -19,6 +20,8 @@ app.get('/ping', (req: Request, res: Response) => {
 app.use("/api/user", userRoutes)
 
 app.use("/api/category", categoryRoutes)
+
+app.use("/api/tasks", taskRoutes)
 
 app.listen(PORT, () => {
     console.log("Server is Up and running")
