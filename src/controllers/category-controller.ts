@@ -38,26 +38,25 @@ export const createCategory = async (req: AuthRequest, res: Response ) => {
 
   export const deleteCategory = async (req: AuthRequest, res: Response) => {
     try {
-      const { id } = req.params
-      await Task.deleteMany({
-        categoryId: id,
-      })
-      const category = await Category.deleteOne({
-        _id: id,
-      })
-      res.send({ message: "Category deleted successfully" })
+      const { id } = req.params;
+  
+      await Category.deleteMany({
+        _id : id
+      });
+      res.send({ message: "Category deleted successfully" });
     } catch (error) {
-      res.send({ error: "Error in deleting the category" })
-      throw error
+      console.log(error)
+      res.send({ error: "Error in deleting the category" });
+      throw error;
     }
-  }
+  };
   
   export const updateCategory = async ( req: AuthRequest, res: Response ) => {
     try {
       const { _id, color, icon, isEditable, name }: ICategory = req.body
       await Category.updateOne(
         {
-          _id,
+          _id
         },
         {
           $set: {
@@ -67,7 +66,7 @@ export const createCategory = async (req: AuthRequest, res: Response ) => {
             isEditable,
           },
         }
-      )
+      );
       res.send({ message: "Category updated successfully" })
     } catch (error) {
       console.log("error in updateCategory", error)
